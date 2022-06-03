@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
 const mysql = require('mysql');
-
+const config = require('dotenv').config();
+const app = express();
 
 var con = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -9,6 +10,7 @@ var con = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME
 });
+
 con.connect((err) => {
 if (err) {
     console.error('error conecting: ' + err.stack);
@@ -18,10 +20,6 @@ else {
     console.log("Connected to database.");
 }
 });
-
-
-
-const app = express();
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/index.html"));
