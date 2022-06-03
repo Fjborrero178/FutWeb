@@ -3,12 +3,8 @@ const path = require("path");
 const mysql = require('mysql');
 
 
-var con = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
-});
+
+
 con.connect((err) => {
 if (err) {
     console.error('error conecting: ' + err.stack);
