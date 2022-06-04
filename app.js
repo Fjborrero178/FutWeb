@@ -4,34 +4,23 @@ const mysql = require('mysql');
 const config = require('dotenv').config();
 const app = express();
 
-var equipo = '';
-var grupo = '';
-
-
-/* var con = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
-}); */
-
-/* con.connect((err) => {
-if (err) {
-    console.error('error conecting: ' + err.stack);
-    return;
-}
-else {
-    console.log("Connected to database.");
-}
-}); */
-
 app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/registro.html"));
+});
+app.get("/sesion", (req, res) => {
+  res.sendFile(path.join(__dirname + "/sesion.html"));
+});
+app.get("/index", (req, res) => {
   res.sendFile(path.join(__dirname + "/index.html"));
 });
 
 app.get("/style.css", (req, res) => {
     res.sendFile(path.join(__dirname + "/style.css"));
   });
+
+app.get("/styleregistro.css", (req, res) => {
+    res.sendFile(path.join(__dirname + "/styleregistro.css"));
+});
 
   app.get("/bayer.png", function (req, res) {
     res.sendFile(path.join(__dirname + "/bayer.png"));
