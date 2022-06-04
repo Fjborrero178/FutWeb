@@ -4,14 +4,17 @@ const mysql = require('mysql');
 const config = require('dotenv').config();
 const app = express();
 
-app.get("/", (req, res) => {
+/* app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/registro.html"));
 });
 app.get("/sesion", (req, res) => {
   res.sendFile(path.join(__dirname + "/sesion.html"));
-});
-app.get("/index", (req, res) => {
+}); */
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/index.html"));
+});
+app.get("/jugadores", function (req, res) {
+  res.sendFile(path.join(__dirname + "/jugadores.html"));
 });
 
 app.get("/style.css", (req, res) => {
@@ -44,6 +47,11 @@ var connection = mysql.createConnection({
 
 connection.connect();
  
+connection.query('SELECT grupo, equipo FROM Telematica.grupos, Telematica.equipos WHERE Telematica.grupos.idequipo=Telematica.equipos.idequipos', function (error, grupo,equipo) {
+  if (error) throw error;
+  console.log(equipo,grupo);
+});
+
 connection.query('SELECT grupo, equipo FROM Telematica.grupos, Telematica.equipos WHERE Telematica.grupos.idequipo=Telematica.equipos.idequipos', function (error, grupo,equipo) {
   if (error) throw error;
   console.log(equipo,grupo);
