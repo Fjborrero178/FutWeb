@@ -4,14 +4,18 @@ const mysql = require('mysql');
 const config = require('dotenv').config();
 const app = express();
 
-var con = mysql.createConnection({
+var equipo = '';
+var grupo = '';
+
+
+/* var con = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME
-});
+}); */
 
-con.connect((err) => {
+/* con.connect((err) => {
 if (err) {
     console.error('error conecting: ' + err.stack);
     return;
@@ -19,7 +23,7 @@ if (err) {
 else {
     console.log("Connected to database.");
 }
-});
+}); */
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/index.html"));
@@ -29,6 +33,31 @@ app.get("/style.css", (req, res) => {
     res.sendFile(path.join(__dirname + "/style.css"));
   });
 
+  app.get("/bayer.png", function (req, res) {
+    res.sendFile(path.join(__dirname + "/bayer.png"));
+});
+
+app.get("/city.png", function (req, res) {
+  res.sendFile(path.join(__dirname + "/city.png"));
+});
+
 app.listen(3000, () => {
   console.log("server listening on port", 3000);
 });
+
+
+var connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
+});
+
+connection.connect();
+ 
+connection.query('SELECT grupo, equipo FROM Telematica.grupos, Telematica.equipos WHERE Telematica.grupos.idequipo=Telematica.equipos.idequipos', function (error, grupo,equipo) {
+  if (error) throw error;
+  console.log(equipo,grupo);
+});
+
+connection.end();
