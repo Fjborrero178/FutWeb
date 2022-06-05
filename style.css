@@ -1,6 +1,73 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Century Gothic', sans-serif;
+}
+
+header {
+  width: 100%;
+  padding: 20px;
+  color: white;
+  text-align: left;
+  background: #112d4e;
+}
+
+nav ul {
+  background: #164884;
+  text-align: center;
+  list-style: none;
+  overflow: hidden;
+
+}
+
+ul li {
+  display: inline-block;
+  padding: 20px;
+  transition: all ease-in-out 250ms;
+}
+
+ul li:hover {
+  background: #112d4e;
+}
+
+ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.hide {
+  padding: 16px;
+  font-size: 22px;
+  background: #112d4e;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  ul li {
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+  }
+
+  .hide {
+    display: block;
+  }
+
+  nav ul {
+  display: none;
+
+  }
+}
+
 h1,p{
     font-family:sans-serif;
-    width:400px;
+    width:100px;
     margin:35px auto;
     text-align:center;
     color:rgb(5, 5, 5);
@@ -12,9 +79,9 @@ h1,p{
  table{
     width:400px;
     margin:0 auto;
-    color:white;
+    color:rgb(207, 47, 47);
     text-align:center;
-    transform: translateX(-50%);
+    transform: translateX(3%);
   }
   tr{
     cursor:pointer;
@@ -26,20 +93,22 @@ h1,p{
   }
   
   /* Impares */
+
   table tr:nth-child(odd){
-    background-color:#0a0a0a;
+    background-color:#fff;
   }
   
   table tr:nth-child(odd):hover{
-    color:black;
-    background-color:#000000;
+    color:#ffff;
+    background-color:#ffff;
   }
   /* Pares */
+  
   table tr:nth-child(even){
-    background-color:#000000;
+    background-color:#ffff;
   }
   
   table tr:nth-child(even):hover{
-    color:black;
-    background-color:#000000;
+    color:#ffff;
+    background-color:#ffff;
   }
