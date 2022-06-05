@@ -4,30 +4,38 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Jugadores Bayern</title>
+	<title>Document</title>
 </head>
 <body>
-	<script src="./Scripts/Bayern.js"></script>
-	<div>
-		<label>Latitud:ㅤㅤ</label>
-		<label id="LatID" ></label>
-	  </div>
+	<p id="parrafo"></p>
+	<script> 
+ 	async function prueba(){
+		const response = await fetch ("/data");
+		const data = await response.json();
+		console.log(data);
+		mostrarData(data);
+    }
+    prueba();
+	function mostrarData(result)  {
+	let html = "";
+	for (let i = 0; i < result.length; i++) {
+		html += `
+		<tr>
+		<td>${result[i].nombre}</td>
+		<td>${result[i].apellido}</td>
+		<td>${result[i].numero}</td>
+		<td>${result[i].equipo}</td>
+		</tr>
+		`;
+	}
 	
+	let container = document.querySelector("#data");
+	container.innerHTML = html;
+	}
+	</script>
 	
-	  <div>
-		<label>Longitud:ㅤㅤ</label>
-		<label id="LongID"  ></label>
-	  </div>
-	
-	  <div>
-		<label>Fecha:ㅤㅤ</label>
-		<label id="FechaID"></label>
-	  </div>
-	
-	  <div>
-		  <label>Hora:ㅤㅤ</label>
-		  <label id="HoraID"></label>
-	  </div> 
+	<table id="data">
 
+	</table>
 </body>
 </html>

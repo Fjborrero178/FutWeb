@@ -4,7 +4,10 @@ const mysql = require('mysql');
 const config = require('dotenv').config();
 const app = express();
 app.use(express.static('public'))
-const router = express.Router();
+
+
+app.use(express.json())
+app.use(express.static(__dirname + '/public'));
 
 /* app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/registro.html"));
@@ -61,7 +64,7 @@ app.get('/data', async (req, res) => {
   const equipo = req.query.equipo;
   query = `SELECT nombre, apellido, numero, equipo
   FROM Telematica.jugadores, Telematica.equipos
-  WHERE Telematica.jugadores.idequipo=Telematica.equipos.idequipos and Telematica.equipos.idequipos=${equipo}`;
+  WHERE Telematica.jugadores.idequipo=Telematica.equipos.idequipos and Telematica.equipos.idequipos=7`;
   connection.query(query, (err, result) => {
     if (!err) {
       return res.send(result).status(200);
@@ -70,5 +73,6 @@ app.get('/data', async (req, res) => {
       return res.status(500);
     }
   });
+  
   connection.end();
 });
