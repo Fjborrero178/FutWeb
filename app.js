@@ -24,6 +24,10 @@ app.get("/jugadores", function (req, res) {
   res.sendFile(path.join(__dirname + "/jugadores.html"));
 });
 
+app.get("/jugadoresL", function (req, res) {
+  res.sendFile(path.join(__dirname + "/jugadoresL.html"));
+});
+
 app.get("/style.css", (req, res) => {
     res.sendFile(path.join(__dirname + "/style.css"));
   });
@@ -62,9 +66,10 @@ connection.query('SELECT grupo, equipo FROM Telematica.grupos, Telematica.equipo
 
 app.get('/data', async (req, res) => {
   const equipo = req.query.equipo;
+  const idequipo = req.query.idequipo;
   query = `SELECT nombre, apellido, numero, equipo
   FROM Telematica.jugadores, Telematica.equipos
-  WHERE Telematica.jugadores.idequipo=Telematica.equipos.idequipos and Telematica.equipos.idequipos=7`;
+  WHERE Telematica.jugadores.idequipo=Telematica.equipos.idequipos and Telematica.equipos.idequipos=${idequipo}`;
   connection.query(query, (err, result) => {
     if (!err) {
       return res.send(result).status(200);
@@ -73,6 +78,5 @@ app.get('/data', async (req, res) => {
       return res.status(500);
     }
   });
-  
-  connection.end();
+ 
 });
