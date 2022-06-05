@@ -7,10 +7,17 @@
 	<title>Document</title>
 </head>
 <body>
-	<p id="parrafo"></p>
 	<script> 
+	const s = new URLSearchParams(window.location.search);
+	const idequipo = s.get("idequipo")
  	async function prueba(){
-		const response = await fetch ("/data");
+		
+		 const search = new URLSearchParams({
+			idequipo
+		});
+		console.log(search)
+		const response = await fetch ("/data?"+ search);
+		
 		const data = await response.json();
 		console.log(data);
 		mostrarData(data);
