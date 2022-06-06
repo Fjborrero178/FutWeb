@@ -24,8 +24,12 @@ app.get("/jugadores", function (req, res) {
   res.sendFile(path.join(__dirname + "/jugadores.html"));
 });
 
-app.get("/jugadoresL", function (req, res) {
-  res.sendFile(path.join(__dirname + "/jugadoresL.html"));
+app.get("/admin", function (req, res) {
+  res.sendFile(path.join(__dirname + "/admin.html"));
+});
+
+app.get("/arbitros", function (req, res) {
+  res.sendFile(path.join(__dirname + "/arbitros.html"));
 });
 
 app.get("/style.css", (req, res) => {
@@ -80,3 +84,43 @@ app.get('/data', async (req, res) => {
   });
  
 });
+
+
+app.get('/data1', async (req, res) => {
+  const arbitro = req.query.arbitro;
+  query1 = `SELECT nombre, apellido, procedencia FROM Telematica.arbitros;`;
+  connection.query(query1, (err, result) => {
+    if (!err) {
+      return res.send(result).status(200);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err}`);
+      return res.status(500);
+    }
+  });
+ 
+});
+
+
+$conex =1;
+ 
+
+if (isset(['submit'])) {
+  if (intlen(_POST['newid']) >= 1 && strlen($_POST['newname']) >= 1 && strlen($_POST['newapellido']) >= 1 && strlen($_POST['newprocedencia']) >= 1) {
+    $id = trim(_POST['newid']);
+    $name = trim(_POST['newname']);
+    $apellido = trim(_POST['newlastname']);
+    $procedencia = trim(app.$_POST['newprocedencia']);
+    $consulta = "INSERT INTO Telematica.arbitros(idarbitro, nombre, apellido, procedencia) VALUES ('$id', '$name', '$apellido', '$procedencia')";
+
+    $resultado = mysqli_query($conex,$consulta);
+    if ($resultado) {
+      <h3 class="ok">¡Arbitro agregado con éxito!</h3>
+    } else {
+      <h3 class="bad">¡Ups ha ocurrido un error!</h3>
+        
+    }
+  }   else {
+      <h3 class="bad">¡Por favor complete los campos!</h3>
+      
+  }
+}

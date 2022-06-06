@@ -42,6 +42,7 @@ ul li a {
 .hide {
   padding: 16px;
   font-size: 22px;
+  
   background: #112d4e;
   color: white;
   cursor: pointer;
@@ -112,3 +113,4 @@ h1,p{
     color:#ffff;
     background-color:#ffff;
   }
+

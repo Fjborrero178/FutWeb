@@ -6,19 +6,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 
-	<style>
-		table {
-   width: 100%;
-   border: 1px solid #000;
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+/* Se retira el margen y el padding al rededor del body. Se establece la altura del body al mismo tamaño del alto de la pantalla. Se alinea todo al centro, tanto en el eje horizontal como en el eje vertical*/
+
+body {
+  margin: 0;
+  height: 100vh;
+  padding: 0;
+  font-family: "lato", sans-seriff;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  border: "1px" #0000;
 }
-th, td {
-   width: 25%;
-   text-align: left;
-   vertical-align: top;
-   border: 1px solid #000;
-   border-spacing: 0;
+
+#searchInput:focus {
+  border-bottom: 2px solid #4575b6;
 }
-	</style>
+    </style>
 
 
 </head>

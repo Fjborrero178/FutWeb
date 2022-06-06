@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Arbitros</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+/* Se retira el margen y el padding al rededor del body. Se establece la altura del body al mismo tamaño del alto de la pantalla. Se alinea todo al centro, tanto en el eje horizontal como en el eje vertical*/
+
+body {
+  margin: 0;
+  height: 100vh;
+  padding: 0;
+  font-family: "lato", sans-seriff;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+/* Se remueven los bordes del input. Se establece un ancho igual que el elemento padre y se establece un margen en la parte inferior */
+
+#searchInput {
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Cuando el input gane el foco, se agregará un borde azul en la parte inferior */
+
+#searchInput:focus {
+  border-bottom: 2px solid #4575b6;
+}
+</style>
+
+
+</head>
+<body>
+	<script> 
+ 	async function prueba(){
+		const response = await fetch ("/data1");
+		const data = await response.json();
+		console.log(data);
+		mostrarData(data);
+    }
+    prueba();
+	function mostrarData(result)  {
+	let html = "";
+		html += `
+        <table border="1" style="float:left;" width="40%" cellspacing="0" cellpadding="0">
+      <caption> <h2>Equipo Arbitral</h2></caption>
+
+      <tr>
+        <td>
+            <img src="https://icons.iconarchive.com/icons/hopstarter/flag-borderless/256/Netherlands-icon.png" width="50px" alt="">
+        </td>
+        <td>
+            <h2> ${result[0].apellido} ${result[0].nombre} , ${result[0].procedencia} </h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        <img src="https://icons.iconarchive.com/icons/hopstarter/flag-borderless/128/Poland-icon.png" width="50px" alt="" />
+        </td>
+        <td> 
+            <h2> ${result[1].apellido} ${result[1].nombre} , ${result[1].procedencia} </h2>
+
+          </td>
+      </tr>
+
+      <tr>
+        <td>
+        <img src="https://icons.iconarchive.com/icons/hopstarter/flag-borderless/128/England-icon.png" width="50px" alt="" />
+        </td>
+        <td> 
+            <h2> ${result[2].apellido} ${result[2].nombre} , ${result[2].procedencia} </h2>
+          </td>
+      </tr>
+
+      <tr>
+        <td>
+        <img src="https://icons.iconarchive.com/icons/hopstarter/flag-borderless/256/Portugal-icon.png" width="50px" alt="" />
+        </td>
+        <td> 
+            <h2> ${result[3].apellido} ${result[3].nombre} , ${result[3].procedencia} </h2>
+          </td>
+      </tr>
+          `;
+	
+	let container = document.querySelector("#data");
+	container.innerHTML = html;
+	}
+	</script>
+	
+	<table id="data">
+
+	</table>
+</body>
+</html>
