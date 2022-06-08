@@ -2,13 +2,15 @@ const express = require("express");
 const path = require("path");
 const mysql = require('mysql');
 const { header } = require("express/lib/request");
+const Pool = require("mysql/lib/Pool");
 const config = require('dotenv').config();
 const app = express();
 app.use(express.static('public'))
 
 
-app.use(express.json())
+app.use(express.json());
 app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded());
 
 /* app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/registro.html"));
@@ -28,7 +30,6 @@ app.get("/jugadores", function (req, res) {
 app.get("/admin", function (req, res) {
   res.sendFile(path.join(__dirname + "/admin.html"));
 });
-
 
 app.get("/arbitros", function (req, res) {
   res.sendFile(path.join(__dirname + "/arbitros.html"));
@@ -102,8 +103,28 @@ app.get('/data1', async (req, res) => {
  
 });
 
+
+
 app.post("/admin",async (req,res) =>{
   pare = await req.body;
   console.log(pare); 
-  
+  //res.send('received')
+
+  const { ID } = req.body;
+  const { Nombre } = req.body;
+  const { Apellido } = req.body;
+  const { Procedencia } = req.body;
+
+  const newArbi = {
+    idarbitro: ID,
+    nombre: Nombre,
+    apellido: Apellido,
+    procedencia: Procedencia
+  }
+
+  const result = await connection.query(`INSERT INTO Telematica.arbitros SET ?`, [newArbi]);
+  console.log(result);
+  //query1 = `SELECT nombre, apellido, procedencia FROM Telematica.arbitros;`;
+  //console.log(result);
+  //res.send("../admin");
 });

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>  
+    <p>
+        <form>
+            Busca un código: <input type="text" id="ctexto"  name="busquedacodigo" size="4" maxlength="4" value="new">
+        
+
+        </form>
+
+        
+
+    
+    </p>
+
+    <script type="text/javascript">
+
+    async function fetchText() {
+        const response = await fetch('/prueba2');
+        const data = await response.json();
+        console.log(data);
+        mostrarData(data);
+    }
+
+    fetchText();
+
+    function mostrarData(result)  {
+	    let html = "";
+	    for (let i = 0; i < result.length; i++) {
+		    html += `
+		    <tr>
+		    <td>${result[i].idequipo}</td>
+		    <td>${result[i].equipo}</td>
+		    </tr>
+		    `;
+	    }
+        let container = document.querySelector("#data");
+	    container.innerHTML = html;
+    }
+
+
+
+
+
+    const btn = document.getElementById("boton");
+
+    btn.addEventListener("click", function () {
+
+    var inputNombre = document.querySelector('input[name="busquedacodigo"]');
+
+    inputNombre.value = "new value";
+
+    })
+
+
+
+
+
+    
+    </script>
+    <table id="data">
+    </table>
+
+
+    <button id="boton">Seleccionar </button>
+</body>
+
+</html>
