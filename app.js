@@ -103,20 +103,7 @@ app.get('/data1', async (req, res) => {
 });
 
 app.post("/admin",async (req,res) =>{
- /*  pare = await req.body;
-  const mysql12 = "INSERT INTO arbitros SET ?"; */
- /*  nombre = null;
-  apellido = null;
-  procedencia = null ; */
- /*  const  obj ={
-    nombre: req.body,
-    apellido: req.body,
-    procedencia: req.body
-  }
-  connection.query(mysql12, obj, function (err) {
-      if (err) throw err;
-      console.log("1 record inserted");
-  });
-  console.log(pare); */
+  pare = await req.body;
+  console.log(pare); 
   
 });
