@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mysql = require('mysql');
+const { header } = require("express/lib/request");
 const config = require('dotenv').config();
 const app = express();
 app.use(express.static('public'))
@@ -28,6 +29,7 @@ app.get("/admin", function (req, res) {
   res.sendFile(path.join(__dirname + "/admin.html"));
 });
 
+
 app.get("/arbitros", function (req, res) {
   res.sendFile(path.join(__dirname + "/arbitros.html"));
 });
@@ -48,6 +50,7 @@ app.get("/city.png", function (req, res) {
   res.sendFile(path.join(__dirname + "/city.png"));
 });
 
+app.get(express.json());
 
 app.listen(3000, () => {
   console.log("server listening on port", 3000);
@@ -69,7 +72,6 @@ connection.query('SELECT grupo, equipo FROM Telematica.grupos, Telematica.equipo
 });
 
 app.get('/data', async (req, res) => {
-  const equipo = req.query.equipo;
   const idequipo = req.query.idequipo;
   query = `SELECT nombre, apellido, numero, equipo
   FROM Telematica.jugadores, Telematica.equipos
@@ -100,27 +102,21 @@ app.get('/data1', async (req, res) => {
  
 });
 
-
-$conex =1;
- 
-
-if (isset(['submit'])) {
-  if (intlen(_POST['newid']) >= 1 && strlen($_POST['newname']) >= 1 && strlen($_POST['newapellido']) >= 1 && strlen($_POST['newprocedencia']) >= 1) {
-    $id = trim(_POST['newid']);
-    $name = trim(_POST['newname']);
-    $apellido = trim(_POST['newlastname']);
-    $procedencia = trim(app.$_POST['newprocedencia']);
-    $consulta = "INSERT INTO Telematica.arbitros(idarbitro, nombre, apellido, procedencia) VALUES ('$id', '$name', '$apellido', '$procedencia')";
-
-    $resultado = mysqli_query($conex,$consulta);
-    if ($resultado) {
-      <h3 class="ok">¡Arbitro agregado con éxito!</h3>
-    } else {
-      <h3 class="bad">¡Ups ha ocurrido un error!</h3>
-        
-    }
-  }   else {
-      <h3 class="bad">¡Por favor complete los campos!</h3>
-      
+app.post("/admin",async (req,res) =>{
+ /*  pare = await req.body;
+  const mysql12 = "INSERT INTO arbitros SET ?"; */
+ /*  nombre = null;
+  apellido = null;
+  procedencia = null ; */
+ /*  const  obj ={
+    nombre: req.body,
+    apellido: req.body,
+    procedencia: req.body
   }
-}
+  connection.query(mysql12, obj, function (err) {
+      if (err) throw err;
+      console.log("1 record inserted");
+  });
+  console.log(pare); */
+  
+});

@@ -28,37 +28,72 @@ border-bottom: 2px solid #4575b6;
 </style>
 </head>
 <body>
-  <form method="post">
-    <div class="app">
-        <table>
-            <caption> <h3>Agregar Arbitro</h3></caption>
-            <thead>
-              <tr>
-                <th>IDarbitro</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Procedencia</th>
-                <th>Submit</th>
-              </tr>
-            </thead>
-              <tr>
-                <td>
-                    <input type="text" id="newid" placeholder="ID"/>
-                </td>
-                <td>
-                    <input type="text" id="newname" placeholder="Nombre"/>
-                </td>
-                <td>
-                    <input type="text" id="newapellido" placeholder="Apellido"/>
-                </td>
-                <td>
-                    <input type="text" id="newprocedencia" placeholder="Procedencia"/></td>
-                <td>
-                    <input type="submit" name="submit">
-                </td>
-              </tr>
-        </table>
-    </div>
- </form>
+        <div class="app">
+            <table>
+                <caption> <h3>Agregar Arbitro</h3></caption>
+                <thead>
+                  <tr>
+                    <th>IDarbitro</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Procedencia</th>
+                    <th>Submit</th>
+                  </tr>
+                </thead>
+                <form method="POST" action="/admin">
+                  <tr>
+                    <td>
+                        <input type="text" id="newid" name="newid" placeholder="ID"/>
+                    </td>
+                    <td>
+                        <input type="text" id="newname" placeholder="Nombre"/>
+                    </td>
+                    <td>
+                        <input type="text" id="newapellido" placeholder="Apellido"/>
+                    </td>
+                    <td>
+                        <input type="text" id="newprocedencia" placeholder="Procedencia"/></td>
+                    <td>
+                        <button onclick="save()">Submit</button>
+                    </td>
+                  </tr>
+                </form>
+            </table>
+        </div>
+    
+        
+ <script> 
+
+    
+
+    
+
+   
+        
+function save(){
+    
+    var id = document.getElementById("newid").value;
+    var name = document.getElementById("newname").value;
+    var lname = document.getElementById("newapellido").value;
+    var proce = document.getElementById("newprocedencia").value;
+
+    saveobj = {
+        "ID": id,
+        "Nombre": name,
+        "Apellido": lname,
+        "Procedencia": proce
+    }
+
+    fetch( "/admin",{
+    method:"POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(saveobj),
+  });
+  console.log(saveobj)
+}
+ </script>
+
 </body>
 </html>
