@@ -62,6 +62,11 @@ app.get("/city.png", function (req, res) {
   res.sendFile(path.join(__dirname + "/city.png"));
 });
 
+app.get("/mostrarinfom", function (req, res) {
+  res.sendFile(path.join(__dirname + "/mostrarinfom.html"));
+});
+
+
 app.get(express.json());
 
 app.listen(3000, () => {
@@ -129,6 +134,19 @@ app.get('/data2', async (req, res) => {
  
 });
 
+app.get('/data12', async (req, res) => {
+  const arbitro = req.query.arbitro;
+  query1 = `SELECT minuto, nombre, equipo, texto FROM Telematica.infominuto WHERE idequipo1=4`;
+  connection.query(query1, (err, result) => {
+    if (!err) {
+      return res.send(result).status(200);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err}`);
+      return res.status(500);
+    }
+  });
+ 
+});
 
 app.post("/admin",async (req,res) =>{
   pare = await req.body;
@@ -200,3 +218,4 @@ app.get('/visitantes', async (req, res) => {
     }
   });
 });
+

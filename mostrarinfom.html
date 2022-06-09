@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <h1> <center>Información del partido</center>   </h1>
+    <title>Estadisticas</title>
+    <h1 ALIGN=center>Información del partido   </h1>
     <META HTTP-EQUIV="REFRESH" CONTENT="5;URL=mostrarinfom">
 </head>
 <body>
-    <td width="80px">Minuto</td>
-    <td width="80px">Nombre</td>
-    <td width="80px">Equipo</td>
-    <td width="80px">Detalle</td>
     
+    <tr width="80px" cellspacing="0" cellpadding="0">Minuto</tr>
+    <td width="80px" cellspacing="0" cellpadding="0">Nombre</td>
+    <td width="80px" cellspacing="0" cellpadding="0">Equipo</td>
+    <td width="80px"cellspacing="0" cellpadding="0">Detalle</td> 
+     
     <script>
     async function prueba(){
         const response = await fetch ("/data12");
@@ -41,7 +42,8 @@
     
     
     </script>
-    <table id="data" >
+    <table id="data" cellspacing="0" cellpadding="0"></table>
+   
     
 </body>
 </html>
