@@ -167,35 +167,6 @@ app.get('/local', async (req, res) => {
   });
 });
 
-
-
-
-
-
-
-
-
-
-
-app.get('/data12', async (req, res) => {
-  
-  query1 = `SELECT minuto, nombre, equipo, texto FROM Telematica.infominuto WHERE idequipo1 = 4;`;
-  connection.query(query1, (err, result) => {
-    if (!err) {
-      return res.send(result).status(200);
-    } else {
-      console.log(`Ha ocurrido el siguiente ${err}`);
-      return res.status(500);
-    }
-  });
- 
-});
-
-
-app.get("/mostrarinfom", function (req, res) {
-  res.sendFile(path.join(__dirname + "/mostrarinfom.html"));
-});
-
 app.post("/infom",async (req,res) =>{
   const { idequipo1 } = req.body;
   const { idequipo2 } = req.body;
@@ -215,4 +186,17 @@ app.post("/infom",async (req,res) =>{
   const result = await connection.query(`INSERT INTO Telematica.infominuto SET ?`, [infomnew]);
   console.log(result);
   res.redirect('/admin');
+});
+
+app.get('/visitantes', async (req, res) => {
+  /* const idequipo = req.query.idequipo; */
+  local = `SELECT visitante FROM Telematica.partidos`;
+  connection.query(local, (err, result) => {
+    if (!err) {
+      return res.send(result).status(200);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err}`);
+      return res.status(500);
+    }
+  });
 });

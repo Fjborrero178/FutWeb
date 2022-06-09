@@ -8,13 +8,55 @@
   <title>Live</title>
 </head>
 <body>
+  <script>
+    async function pruebalo(){
+    const response = await fetch ("/local");
+    const data = await response.json();
+    console.log(data);
+    mostrarlo(data);
+    
+    }
+    pruebalo();
+ 
+    function mostrarlo(s)  {
+      
+   let html = "";
+   for (let i = 0; i < s.length; i++) {
+   html = s[i].local;
+   let container = document.querySelector("#local");
+   container.innerHTML = html;
+ 
+    }
+  }
+
+  async function pruebalov(){
+    const response = await fetch ("/visitantes");
+    const data = await response.json();
+    console.log(data);
+    mostrarvis(data);
+    
+    }
+    pruebalov();
+ 
+    function mostrarvis(v)  {
+      
+   let html = "";
+   for (let i = 0; i < v.length; i++) {
+   html = v[i].visitante;
+   let container = document.querySelector("#visitante");
+   container.innerHTML = html;
+ 
+    }
+  }
+   </script>
+
   <div class="container">
     <div class="match">
       </div>
       <div class="match-content">
         <div class="column">
           <div class="team team--home">
-            <h2 class="team-name">alex</h2>
+            <h2 class="team-name" id="local"></h2>
           </div>
         </div>
         <div class="column">
@@ -34,7 +76,7 @@
               Referee: <strong>Mike dean</strong>
             </div>
         </div>
-        <h2 class="team-name"> Daniel</h2>
+        <h2 class="team-name" id="visitante"> </h2>
       </div>
     </div>
   </div>
