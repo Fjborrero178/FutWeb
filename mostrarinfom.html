@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <h1> <center>Información del partido</center>   </h1>
-
     <META HTTP-EQUIV="REFRESH" CONTENT="5;URL=mostrarinfom">
-
 </head>
 <body>
-
+    <td width="80px">Minuto</td>
+    <td width="80px">Nombre</td>
+    <td width="80px">Equipo</td>
+    <td width="80px">Detalle</td>
+    
     <script>
-
     async function prueba(){
-		const response = await fetch ("/data12");
-		const data = await response.json();
-		console.log(data);
-		mostrarData(data);
+        const response = await fetch ("/data12");
+        const data = await response.json();
+        console.log(data);
+        mostrarData(data);
     }
     prueba();
-
-	function mostrarData(result)  {
+    function mostrarData(result)  {
         let html = "";
-	    for (let i = 0; i < result.length; i++) {
+        for (let i = 0; i < result.length; i++) {
             html += `
             <table border="1" style="float:left;" width="40%" cellspacing="0" cellpadding="0">
             <tr>
@@ -33,18 +33,14 @@
             </td>
             </tr>
           `;
-	    }
-	
-	    let container = document.querySelector("#data");
-	    container.innerHTML = html;
-	}
-
-    miFecha = new Date()
-    document.write(miFecha.getHours() + ":" + miFecha.getMinutes() + ":" + miFecha.getSeconds())
+        }
     
-
+        let container = document.querySelector("#data");
+        container.innerHTML = html;
+    }
+    
+    
     </script>
-
     <table id="data" >
     
 </body>
