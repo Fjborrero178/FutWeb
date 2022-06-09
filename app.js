@@ -10,7 +10,7 @@ app.use(express.static('public'))
 
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 
 /* app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/registro.html"));
@@ -91,7 +91,7 @@ app.get('/data', async (req, res) => {
 
 app.get('/data1', async (req, res) => {
   const arbitro = req.query.arbitro;
-  query1 = `SELECT nombre, apellido, procedencia FROM Telematica.arbitros;`;
+  query1 = `SELECT nombre, apellido, procedencia FROM Telematica.arbitros WHERE nombre!="null";`;
   connection.query(query1, (err, result) => {
     if (!err) {
       return res.send(result).status(200);
@@ -124,7 +124,7 @@ app.post("/admin",async (req,res) =>{
 
   const result = await connection.query(`INSERT INTO Telematica.arbitros SET ?`, [newArbi]);
   console.log(result);
-  //query1 = `SELECT nombre, apellido, procedencia FROM Telematica.arbitros;`;
+  res.redirect('/arbitros');  //query1 = `SELECT nombre, apellido, procedencia FROM Telematica.arbitros;`;
   //console.log(result);
   //res.send("../admin");
 });
