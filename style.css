@@ -90,7 +90,7 @@ h1,p{
   .destacado{
     font-family:Arial;
     font-weight:bold;
-    background-color:#0000;
+    background-color:#fff;
   }
   
   /* Impares */
@@ -100,18 +100,18 @@ h1,p{
   }
   
   table tr:nth-child(odd):hover{
-    color:#ffff;
-    background-color:#ffff;
+    color:#000;
+    background-color:#fff;
   }
   /* Pares */
   
   table tr:nth-child(even){
-    background-color:#ffff;
+    background-color:#fff;
   }
   
   table tr:nth-child(even):hover{
-    color:#ffff;
-    background-color:#ffff;
+    color:#000;
+    background-color:#fff;
   }
 table.one {
     position: relative;

@@ -110,7 +110,7 @@ app.get('/data1', async (req, res) => {
 
 app.get('/data2', async (req, res) => {
   const grupoa = req.query.grupoa;
-  query1 = `select equipo, logos, idequipos, puntos from Telematica.equipos, Telematica.grupos where idequipo=idequipos order by grupo=2, puntos desc, dg desc;`;
+  query1 = `select equipo, logos, idequipos, puntos, pj, pg, pe, pp, gf, gc, dg from Telematica.equipos, Telematica.grupos where idequipo=idequipos order by grupo=2, puntos desc, dg desc, gf desc;`;
   connection.query(query1, (err, aaaa) => {
     if (!err) {
       return res.send(aaaa).status(200);
