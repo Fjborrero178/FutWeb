@@ -35,6 +35,10 @@ app.get("/arbitros", function (req, res) {
   res.sendFile(path.join(__dirname + "/arbitros.html"));
 });
 
+app.get("/inicio", function (req, res) {
+  res.sendFile(path.join(__dirname + "/inicio.html"));
+});
+
 app.get("/style.css", (req, res) => {
     res.sendFile(path.join(__dirname + "/style.css"));
   });
@@ -103,6 +107,20 @@ app.get('/data1', async (req, res) => {
  
 });
 
+
+app.get('/data2', async (req, res) => {
+  const grupoa = req.query.grupoa;
+  query1 = `select equipo, logos, idequipos, puntos from Telematica.equipos, Telematica.grupos where idequipo=idequipos order by grupo=2, puntos desc, dg desc;`;
+  connection.query(query1, (err, aaaa) => {
+    if (!err) {
+      return res.send(aaaa).status(200);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err}`);
+      return res.status(500);
+    }
+  });
+ 
+});
 
 
 app.post("/admin",async (req,res) =>{

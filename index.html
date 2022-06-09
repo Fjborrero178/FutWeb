@@ -10,13 +10,13 @@
 <body>
 
   <header>
-    <h1 style="font-family: 'Brush Script MT', cursive;">FutWeb</h1>
+    <h1 style="font-family: 'Brush Script MT';">FutWeb</h1>
 
   </header>
 
   <nav>
     <ul>
-      <li><a href="#">Inicio</a></li>
+      <li><a href="../inicio">Inicio</a></li>
       <li><a href="../admin">Admin</a></li>
       <li><a href="../arbitros" target="_blank">Arbitros</a></li>
       <li><a href="#">Live</a></li>
@@ -33,148 +33,186 @@
       $("nav ul").toggle('slow');
     })
   </script>
-
-  <div class="contenedor">
+  	<script> 
+      async function prueba(){
+       const response = await fetch ("/data2");
+       const data = await response.json();
+       console.log(data);
+       mostrarData(data);
+       }
+       prueba();
+     function mostrarData(aaaa)  {
+     let html = "";
+     for (let i = 0; i < 1; i++) {
+       html += `
+       <div class="contenedor">
 
     
-    <table border="1" style="float:left;" width="40%" cellspacing="0" cellpadding="0">
-      <caption> <h2>Grupo A</h2></caption>
+<table border="1" style="float:left;" width="40%" cellspacing="0" cellpadding="0">
+  <caption> <h2>Grupo A</h2></caption>
+  <tr class="destacado">
+    <td>Escudo</td>
+    <td>Nombre</td>
+    <td>Puntos</td>
+    <td>PJ</td>
+    <td>PE</td>
+    <td>PG</td>
+    <td>GF</td>
+    <td>GC</td>
+    <td>DG</td>
+
+  </tr>
+  <tr>
+    <td>
+        <img src=${aaaa[0].logos} width="60px" alt="">
+    </td>
+    <td>
+    <a  href="../jugadores?idequipo=${aaaa[0].idequipo}" target="_blank">${aaaa[0].equipo}</a></p>
+    </td>
+    <td>${aaaa[0].puntos}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr>
+    <td>
+    <img src=${aaaa[1].logos} width="70px" alt="" />
+    </td>
+    <td>  <a href="../jugadores?idequipo=${aaaa[1].idequipo}" target="_blank">${aaaa[1].equipo}</a>
+
+      </td>
+    <td>${aaaa[1].puntos}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr>
+    <td>
+      <img src=${aaaa[2].logos} width="60px" alt="" />
+    </td>
+    <td><a href="../jugadores?idequipo=${aaaa[2].idequipo}" target="_blank">${aaaa[2].equipo}</a></td>
+    <td>${aaaa[2].puntos}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr>
+    <td>
+      <img src=${aaaa[3].logos} width="60px" alt="">
+    </td>
+    <td><a href="../jugadores?idequipo=${aaaa[3].idequipo}" target="_blank">${aaaa[3].equipo}</a></td>
+    <td>${aaaa[3].puntos}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+
+
+</div>
+  
+  <div class="contenedor">
+
+    <table border="1" width="40%" cellspacing="0" cellpadding="0">
+      <caption><h2>Grupo B</h2 ></caption>
       <tr class="destacado">
         <td>Escudo</td>
         <td>Nombre</td>
-        <td>PG</td>
-        <td>PP</td>
+        <td>Puntos</td>
+        <td>PJ</td>
         <td>PE</td>
+        <td>PG</td>
         <td>GF</td>
         <td>GC</td>
-        <td>POS</td>
+        <td>DG</td>
+
       </tr>
       <tr>
         <td>
-            <img src="bayer.png" width="60px" alt="">
+            <img src=${aaaa[4].logos} width="60px" alt="">
         </td>
         <td>
-        <a  href="../jugadores?idequipo=7" target="_blank">Bayern Munich</a></p>
+        <a  href="../jugadores?idequipo=${aaaa[4].idequipo}" target="_blank">${aaaa[4].equipo}</a></p>
         </td>
+        <td>${aaaa[4].puntos}</td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
+
       </tr>
       <tr>
         <td>
-        <img src="https://icons.iconarchive.com/icons/giannis-zographos/english-football-club/128/Liverpool-FC-icon.png" width="70px" alt="" />
+        <img src=${aaaa[5].logos} width="60px" alt="" />
         </td>
-        <td>  <a href="../jugadores?idequipo=3" target="_blank">Liverpool</a>
+        <td>  <a href="../jugadores?idequipo=${aaaa[5].idequipo}" target="_blank">${aaaa[5].equipo}</a>
 
           </td>
+        <td>${aaaa[5].puntos}</td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
-      </tr>
-      <tr>
-        <td>
-          <img src="city.png" width="60px" alt="" />
-        </td>
-        <td><a href="../jugadores?idequipo=5" target="_blank">Manchester City</a></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <img src="https://icons.iconarchive.com/icons/giannis-zographos/spanish-football-club/128/Real-Madrid-icon.png" width="60px" alt="">
-        </td>
-        <td><a href="../jugadores?idequipo=1" target="_blank">Real Madrid</a></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
 
+      </tr>
+      <tr>
+        <td>
+          <img src=${aaaa[6].logos} width="70px" alt="" />
+        </td>
+        <td><a href="../jugadores?idequipo=${aaaa[6].idequipo}" target="_blank">${aaaa[6].equipo}</a></td>
+        <td>${aaaa[6].puntos}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>
+          <img src=${aaaa[7].logos} width="60px" alt="">
+        </td>
+        <td><a href="../jugadores?idequipo=${aaaa[7].idequipo}" target="_blank">${aaaa[7].equipo}</a></td>
+        <td>${aaaa[7].puntos}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+      </tr>
 
     </div>
-      
-      <div class="contenedor">
-
-        <table border="1" width="40%" cellspacing="0" cellpadding="0">
-          <caption><h2>Grupo B</h2 ></caption>
-          <tr class="destacado">
-            <td>Escudo</td>
-            <td>Nombre</td>
-            <td>PG</td>
-            <td>PP</td>
-            <td>PE</td>
-            <td>GF</td>
-            <td>GC</td>
-            <td>POS</td>
-          </tr>
-          <tr>
-            <td>
-                <img src="https://icons.iconarchive.com/icons/giannis-zographos/spanish-football-club/256/FC-Barcelona-icon.png" width="60px" alt="">
-            </td>
-            <td>
-            <a  href="../jugadores?idequipo=2" target="_blank">Barcelona</a></p>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-            <img src="https://icons.iconarchive.com/icons/giannis-zographos/french-football-club/256/Paris-Saint-Germain-icon.png" width="60px" alt="" />
-            </td>
-            <td>  <a href="../jugadores?idequipo=4" target="_blank">Paris Saint Germain</a>
-    
-              </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://icons.iconarchive.com/icons/giannis-zographos/english-football-club/256/Manchester-United-icon.png" width="70px" alt="" />
-            </td>
-            <td><a href="../jugadores?idequipo=6" target="_blank">Manchester United</a></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://icons.iconarchive.com/icons/giannis-zographos/italian-football-club/256/AC-Milan-icon.png" width="60px" alt="">
-            </td>
-            <td><a href="../jugadores?idequipo=8" target="_blank">Milan</a></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-
-        </div>
-
-
-
+             `;
+       }
+     let container = document.querySelector("#data");
+     container.innerHTML = html;
+     }
+     </script>
+           <title> <h2>Equipo Arbitral</h2></title>
+   
+     <table id="data">
+     </table>
 </body>
 </html>

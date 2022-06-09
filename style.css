@@ -113,4 +113,11 @@ h1,p{
     color:#ffff;
     background-color:#ffff;
   }
-
+table.one {
+    position: relative;
+    float: left;
+}
+ table.two {
+    position: relative;
+    float: right;
+}
