@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+body {
+margin: 0;
+height: 100vh;
+font-family: "lato", sans-seriff;
+display: grid;
+justify-content: left;
+align-items: left;
+font-size: 20px;
+}
+#searchInput {
+border: none;
+outline: none;
+width: 100%;
+margin-bottom: 50px;
+}
+#searchInput:focus {
+border-bottom: 2px solid #4575b6;
+}
+</style>
+</head>
+<body>
+        <div class="app">
+            <table>
+                <caption> <h3>Añadir detalle del partido</h3></caption>
+                <thead>
+                  <tr>
+                    
+                    <th>Numero del equipo 1</th>
+                    <th>Numero del equipo 2</th>
+                    <th>Minuto</th>
+                    <th>Nombre</th>
+                    <th>Equipo</th>
+                    <th>Detalles</th>
+                    
+                  </tr>
+                </thead>
+                <form action="/infom" method="POST">
+                  <tr>
+                  
+                    <td>
+                        <input type="text" id="ide1" />
+                    </td>
+                    <td>
+                        <input type="text" id="ide2" />
+                    </td>
+                    <td>
+                        <input type="text" id="min" />
+                    <td>
+                        <input type="text" id="nom" />
+                    <td>
+                        <input type="text" id="equ" />
+                    <td>
+                        <input type="text" id="tex" /></td>
+                    <td>
+                        <button onclick="enviarinfo()">Enviar</button>
+                    </td>
+                  </tr>
+                </form>
+            </table>
+        </div>
+    
+        
+ <script> 
+
+ 
+        
+function enviarinfo(){
+    
+    
+    var idequipo1 = document.getElementById("ide1").value;
+    var idequipo2 = document.getElementById("ide2").value;
+    var minuto1 = document.getElementById("min").value;
+    var nombre1 = document.getElementById("nom").value;
+    var equipo = document.getElementById("equ").value;
+    var texto = document.getElementById("tex").value;
+
+    guardarinfo = {
+        
+        "idequipo1": idequipo1,
+        "idequipo2": idequipo2,
+        "minuto": minuto1,
+        "nombre": nombre1,
+        "equipo": equipo,
+        "texto": texto
+    }
+
+    fetch( "/infom",{
+    method:"POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(guardarinfo),
+  });
+  console.log(guardarinfo)
+}
+ </script>
+
+</body>
+</html>
