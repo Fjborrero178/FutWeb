@@ -47,6 +47,13 @@ app.get("/styleregistro.css", (req, res) => {
     res.sendFile(path.join(__dirname + "/styleregistro.css"));
 });
 
+app.get("/live", (req, res) => {
+  res.sendFile(path.join(__dirname + "/live.html"));
+});
+app.get("/stylelive.css", (req, res) => {
+  res.sendFile(path.join(__dirname + "/stylelive.css"));
+});
+
 app.get("/bayer.png", function (req, res) {
     res.sendFile(path.join(__dirname + "/bayer.png"));
 });
@@ -145,4 +152,17 @@ app.post("/admin",async (req,res) =>{
   res.redirect('/arbitros');  //query1 = `SELECT nombre, apellido, procedencia FROM Telematica.arbitros;`;
   //console.log(result);
   //res.send("../admin");
+});
+
+app.get('/local', async (req, res) => {
+  /* const idequipo = req.query.idequipo; */
+  local = `SELECT local FROM Telematica.partidos`;
+  connection.query(local, (err, result) => {
+    if (!err) {
+      return res.send(result).status(200);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err}`);
+      return res.status(500);
+    }
+  });
 });
